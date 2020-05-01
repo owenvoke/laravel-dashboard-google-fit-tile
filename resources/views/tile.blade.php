@@ -29,7 +29,7 @@
                             </g>
                         </g>
                     </svg>
-                    <span class="text-4xl">{{ $sleep }} <span class="text-dimmed">hours sleep last night</span></span>
+                    <span class="text-4xl">{{ $sleep }} <span class="text-dimmed"> sleep last night</span></span>
                 </div>
             </div>
         </div>

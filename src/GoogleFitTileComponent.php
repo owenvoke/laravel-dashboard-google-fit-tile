@@ -2,6 +2,7 @@
 
 namespace OwenVoke\GoogleFitTile;
 
+use Carbon\CarbonInterval;
 use Livewire\Component;
 
 class GoogleFitTileComponent extends Component
@@ -19,7 +20,7 @@ class GoogleFitTileComponent extends Component
         $googleFitStore = GoogleFitStore::make();
 
         return view('dashboard-google-fit-tile::tile', [
-            'sleep' => $googleFitStore->sleep(),
+            'sleep' => CarbonInterval::seconds($googleFitStore->sleep())->cascade(),
             'stepCount' => $googleFitStore->stepCount(),
             'refreshIntervalInSeconds' => config('dashboard.tiles.google_fit.refresh_interval_in_seconds', 60),
         ]);
