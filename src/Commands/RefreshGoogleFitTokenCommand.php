@@ -13,12 +13,19 @@ class RefreshGoogleFitTokenCommand extends Command
     /** {@inheritdoc} */
     protected $description = 'Refresh the auth token for Google Fit';
 
-    public function handle(): void
+    public function handle(): ?int
     {
         $this->info('Refreshing Google Fit auth token');
 
-        GoogleFit::make()->refreshAccessToken();
+        try {
+            GoogleFit::make()->refreshAccessToken();
+        } catch (\RuntimeException $exception) {
+            $this->warn($exception->getMessage());
+
+            return 1;
+        }
 
         $this->info('All done!');
+        return 0;
     }
 }

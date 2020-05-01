@@ -63,6 +63,15 @@ In your dashboard view you use the `livewire:google-fit-tile` component.
 </x-dashboard>
 ```
 
+**Generate Google Fit credentials**
+
+1. Create a Google project and generate [API Credentials](https://console.developers.google.com/apis/credentials)
+1. Click the "Authorize APIs" button on Google's [OAuth Playground](https://developers.google.com/oauthplayground/#step1&apisSelect=https://www.googleapis.com/auth/fitness.activity.read)
+1. Click the "Exchange authorization code for tokens" button
+1. Copy the JSON (with `access_token`/`refresh_token`) from the bottom right panel
+1. Add this to a JSON file in `storage/app/google/fit-credentials.json`
+1. Run the `artisan dashboard:refresh-google-fit-token` command manually to validate the configuration
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

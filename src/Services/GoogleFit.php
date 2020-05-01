@@ -14,7 +14,7 @@ use RuntimeException;
 
 class GoogleFit
 {
-    public const CREDENTIALS_PATH = 'app/google/fitness-credentials.json';
+    public const CREDENTIALS_PATH = 'app/google/fit-credentials.json';
     public const ACTIVITY_TYPE_SLEEP = 72;
 
     private Google_Client $googleClient;
@@ -42,12 +42,12 @@ class GoogleFit
         $response = $this->client->users_sessions->listUsersSessions('me');
 
         return collect($response->getSession())->filter(static function (Session $session) {
-            return $session->getActivityType() === self::ACTIVITY_TYPE_SLEEP;
-        })->filter(static function (Session $session) {
-            return Carbon::parse((int) ($session->getEndTimeMillis() / 1000))->isToday();
-        })->map(static function (Session $session) {
-            return ($session->getEndTimeMillis() - $session->getStartTimeMillis()) / 1000;
-        })->first() ?? 0;
+                return $session->getActivityType() === self::ACTIVITY_TYPE_SLEEP;
+            })->filter(static function (Session $session) {
+                return Carbon::parse((int) ($session->getEndTimeMillis() / 1000))->isToday();
+            })->map(static function (Session $session) {
+                return ($session->getEndTimeMillis() - $session->getStartTimeMillis()) / 1000;
+            })->first() ?? 0;
     }
 
     public function getStepCount(): int
@@ -86,7 +86,7 @@ class GoogleFit
             'client_secret' => config('dashboard.tiles.google_fit.secret'),
         ])->json();
 
-        if (! isset($response['access_token']) && ! isset($response['refresh_token'])) {
+        if (! isset($response['access_token'])) {
             throw new RuntimeException('Failed to refresh the Google Fit auth token');
         }
 
