@@ -4,7 +4,6 @@ namespace OwenVoke\GoogleFitTile;
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
-use OwenVoke\GoogleFitTile\Commands\FetchCloudflareStatisticsCommand;
 use OwenVoke\GoogleFitTile\Commands\FetchGoogleFitSleepCommand;
 use OwenVoke\GoogleFitTile\Commands\FetchGoogleFitStepCountCommand;
 use OwenVoke\GoogleFitTile\Commands\RefreshGoogleFitTokenCommand;
