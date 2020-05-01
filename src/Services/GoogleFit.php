@@ -42,12 +42,12 @@ class GoogleFit
         $response = $this->client->users_sessions->listUsersSessions('me');
 
         return collect($response->getSession())->filter(static function (Session $session) {
-                return $session->getActivityType() === self::ACTIVITY_TYPE_SLEEP;
-            })->filter(static function (Session $session) {
-                return Carbon::parse((int) ($session->getEndTimeMillis() / 1000))->isToday();
-            })->map(static function (Session $session) {
-                return ($session->getEndTimeMillis() - $session->getStartTimeMillis()) / 1000;
-            })->first() ?? 0;
+            return $session->getActivityType() === self::ACTIVITY_TYPE_SLEEP;
+        })->filter(static function (Session $session) {
+            return Carbon::parse((int) ($session->getEndTimeMillis() / 1000))->isToday();
+        })->map(static function (Session $session) {
+            return ($session->getEndTimeMillis() - $session->getStartTimeMillis()) / 1000;
+        })->first() ?? 0;
     }
 
     public function getStepCount(): int

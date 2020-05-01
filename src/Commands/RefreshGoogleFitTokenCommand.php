@@ -26,6 +26,7 @@ class RefreshGoogleFitTokenCommand extends Command
         }
 
         $this->info('All done!');
+
         return 0;
     }
 }
