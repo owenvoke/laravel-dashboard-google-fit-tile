@@ -28,12 +28,15 @@ In the `dashboard` config file, you must add this configuration in the `tiles` k
 return [
     // ...
     'tiles' => [
-        'google_fit' => [],
+        'google_fit' => [
+            'id' => env('GOOGLE_FIT_ID'),
+            'secret' => env('GOOGLE_FIT_SECRET'),
+        ],
     ],
 ];
 ```
 
-In `app\Console\Kernel.php` you should schedule the `OwenVoke\GoogleFitTile\Commands\RefreshGoogleFitTokenCommand` to run every `10` minutes.
+In `app\Console\Kernel.php` you should schedule the `OwenVoke\GoogleFitTile\Commands\RefreshGoogleFitTokenCommand` to run every `30` minutes.
 
 If you want step count data, set the `OwenVoke\GoogleFitTile\Commands\FetchGoogleFitStepCountCommand` to run every `x` minutes as well.
 
@@ -44,7 +47,7 @@ If you want sleep data, set the `OwenVoke\GoogleFitTile\Commands\FetchGoogleFitS
 
 protected function schedule(Schedule $schedule)
 {
-    $schedule->command(OwenVoke\GoogleFitTile\Commands\RefreshGoogleFitTokenCommand::class)->everyTenMinutes();
+    $schedule->command(OwenVoke\GoogleFitTile\Commands\RefreshGoogleFitTokenCommand::class)->everyThirtyMinutes();
 
     // Data fetching commands
     $schedule->command(OwenVoke\GoogleFitTile\Commands\FetchGoogleFitStepCountCommand::class)->everyTenMinutes();
