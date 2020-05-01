@@ -1,0 +1,40 @@
+{
+    "name": "owenvoke/laravel-dashboard-google-fit-tile",
+    "type": "library",
+    "description": "A tile for Laravel Dashboard that displays statistics from Google Fit",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "google/apiclient": "^2.4",
+        "spatie/laravel-dashboard": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "OwenVoke\\GoogleFitTile\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OwenVoke\\GoogleFitTile\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "laravel": {
+            "providers": [
+                "OwenVoke\\GoogleFitTile\\GoogleFitTileServiceProvider"
+            ]
+        }
+    }
+}
