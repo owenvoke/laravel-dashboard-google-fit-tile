@@ -46,11 +46,11 @@ If you want sleep data, set the `OwenVoke\GoogleFitTile\Commands\FetchGoogleFitS
 
 protected function schedule(Schedule $schedule)
 {
-    $schedule->command(OwenVoke\GoogleFitTile\Commands\RefreshGoogleFitTokenCommand::class)->everyThirtyMinutes();
+    $schedule->command(\OwenVoke\GoogleFitTile\Commands\RefreshGoogleFitTokenCommand::class)->everyThirtyMinutes();
 
     // Data fetching commands
-    $schedule->command(OwenVoke\GoogleFitTile\Commands\FetchGoogleFitStepCountCommand::class)->everyTenMinutes();
-    $schedule->command(OwenVoke\GoogleFitTile\Commands\FetchGoogleFitSleepCommand::class)->everyTenMinutes();
+    $schedule->command(\OwenVoke\GoogleFitTile\Commands\FetchGoogleFitStepCountCommand::class)->everyTenMinutes();
+    $schedule->command(\OwenVoke\GoogleFitTile\Commands\FetchGoogleFitSleepCommand::class)->everyTenMinutes();
 }
 ```
 
